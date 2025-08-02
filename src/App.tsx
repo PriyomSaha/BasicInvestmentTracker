@@ -12,8 +12,6 @@ import InvestmentPieChart from "./components/InvestmentPieChart";
 import InvestmentTable from "./components/InvestmentTable";
 import DailyQuotePopup from "./components/DailyQuotePopup";
 
-const INSTALL_DELAY_MS = 0; // 30 seconds
-
 function App() {
   const [investmentData, setInvestmentData] = useState<InvestmentData>({
     initialAmount: 10000,
@@ -44,9 +42,7 @@ function App() {
     const handler = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e);
-      setTimeout(() => {
-        setShowInstall(true);
-      }, INSTALL_DELAY_MS);
+      setShowInstall(true);
     };
 
     window.addEventListener("beforeinstallprompt", handler);
