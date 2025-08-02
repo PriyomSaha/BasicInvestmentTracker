@@ -12,6 +12,8 @@ import InvestmentPieChart from "./components/InvestmentPieChart";
 import InvestmentTable from "./components/InvestmentTable";
 import DailyQuotePopup from "./components/DailyQuotePopup";
 
+const INSTALL_DELAY_MS = 30000; // 30 seconds
+
 function App() {
   const [investmentData, setInvestmentData] = useState<InvestmentData>({
     initialAmount: 10000,
@@ -23,6 +25,9 @@ function App() {
 
   const [result, setResult] = useState<InvestmentResult | null>(null);
 
+  const [deferredPrompt, setDeferredPrompt] = useState<Event | null>(null);
+  const [showInstall, setShowInstall] = useState(false);
+
   useEffect(() => {
     const calculatedResult = calculateInvestment(investmentData);
     setResult(calculatedResult);
@@ -33,6 +38,28 @@ function App() {
       ...prev,
       [field]: value,
     }));
+  };
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setTimeout(() => {
+        setShowInstall(true);
+      }, INSTALL_DELAY_MS);
+    };
+
+    window.addEventListener("beforeinstallprompt", handler);
+    return () => window.removeEventListener("beforeinstallprompt", handler);
+  }, []);
+
+  const handleInstallClick = () => {
+    if (!deferredPrompt) return;
+    (deferredPrompt as any).prompt();
+    (deferredPrompt as any).userChoice.then(() => {
+      setDeferredPrompt(null);
+      setShowInstall(false);
+    });
   };
 
   return (
@@ -82,14 +109,13 @@ function App() {
             )}
           </div>
         </div>
-        {/* */}
+
         {result && (
-          <>
-            <div className="mt-8 grid sm:grid-cols-1 gap-4 sm:gap-6 lg:gap-8">
-              <InvestmentTable result={result} />
-            </div>
-          </>
+          <div className="mt-8 grid sm:grid-cols-1 gap-4 sm:gap-6 lg:gap-8">
+            <InvestmentTable result={result} />
+          </div>
         )}
+
         {/* Key Benefits */}
         <div className="mt-12 sm:mt-16 grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           <div className="text-center p-4 sm:p-6 bg-white rounded-xl shadow-sm border border-slate-200">
@@ -132,7 +158,9 @@ function App() {
           </div>
         </div>
       </main>
+
       <DailyQuotePopup />
+
       {/* Footer */}
       <footer className="mt-12 sm:mt-16 bg-slate-900 text-white py-6 sm:py-8">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 text-center">
@@ -142,6 +170,27 @@ function App() {
           </p>
         </div>
       </footer>
+
+      {/* Install PWA Button */}
+      {showInstall && (
+        <button
+          onClick={handleInstallClick}
+          style={{
+            position: "fixed",
+            bottom: "20px",
+            right: "20px",
+            backgroundColor: "#00e676",
+            color: "#000",
+            padding: "12px 18px",
+            borderRadius: "12px",
+            fontWeight: "bold",
+            boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
+            zIndex: 1000,
+          }}
+        >
+          Install App
+        </button>
+      )}
     </div>
   );
 }
