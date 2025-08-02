@@ -10,6 +10,7 @@ import {
 } from "./utils/calculations";
 import InvestmentPieChart from "./components/InvestmentPieChart";
 import InvestmentTable from "./components/InvestmentTable";
+import DailyQuotePopup from "./components/DailyQuotePopup";
 
 function App() {
   const [investmentData, setInvestmentData] = useState<InvestmentData>({
@@ -131,7 +132,7 @@ function App() {
           </div>
         </div>
       </main>
-
+      <DailyQuotePopup />
       {/* Footer */}
       <footer className="mt-12 sm:mt-16 bg-slate-900 text-white py-6 sm:py-8">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 text-center">
