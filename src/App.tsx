@@ -12,7 +12,7 @@ import InvestmentPieChart from "./components/InvestmentPieChart";
 import InvestmentTable from "./components/InvestmentTable";
 import DailyQuotePopup from "./components/DailyQuotePopup";
 
-const INSTALL_DELAY_MS = 30000; // 30 seconds
+const INSTALL_DELAY_MS = 0; // 30 seconds
 
 function App() {
   const [investmentData, setInvestmentData] = useState<InvestmentData>({

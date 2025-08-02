@@ -7,13 +7,21 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.svg", "favicon.ico", "apple-touch-icon.png"],
+      includeAssets: [
+        "favicon.ico",
+        "apple-touch-icon.png",
+        "favicon-32x32.png",
+        "favicon-16x16.png",
+      ],
       manifest: {
         name: "Investmate",
         short_name: "Investmate",
         description:
           "Your Personal Finance Companion - Calculator, Budgeting, and Daily Financial Wisdom",
-        theme_color: "#ffffff",
+        theme_color: "#afc1bd",
+        background_color: "#afc1bd",
+        display: "standalone",
+        start_url: "/",
         icons: [
           {
             src: "pwa-192x192.png",
