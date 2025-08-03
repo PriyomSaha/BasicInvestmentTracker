@@ -22,9 +22,7 @@ const Ad = () => {
         data-ad-client="ca-pub-5578366239225688"
         data-ad-slot="3932415611"
         data-ad-format="rectangle"
-      >
-        I am a placeholder for an advertisement
-      </ins>
+      ></ins>
       <p className="text-xs sm:text-sm text-slate-600 mt-2">
         This ad is powered by Google AdSense. Your support helps keep this app
         free. Thank you!
