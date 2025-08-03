@@ -2,19 +2,26 @@ import { useEffect, useRef } from "react";
 
 const Ad = () => {
   const adRef = useRef<HTMLDivElement>(null);
-  // google.com, ca-pub-3940256099942544, DIRECT, f08c47fec0942fa0
-  //   useEffect(() => {
-  //     const timer = setTimeout(() => {
-  //       try {
-  //         // @ts-ignore
-  //         (window.adsbygoogle = window.adsbygoogle || []).push({});
-  //       } catch (e) {
-  //         console.error("AdSense error:", e);
-  //       }
-  //     }, 500); // Delay ensures DOM is ready
 
-  //     return () => clearTimeout(timer);
-  //   }, []);
+  useEffect(() => {
+    // Avoid pushing multiple times if already initialized
+    const ins = adRef.current?.querySelector("ins.adsbygoogle");
+
+    if (!ins) return;
+
+    // Check if ad is already loaded by looking for data-ad-status="filled"
+    const alreadyInitialized = ins.getAttribute("data-adsbygoogle-status");
+
+    if (!alreadyInitialized) {
+      try {
+        // Push ad only if not already pushed
+        // @ts-ignore
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        console.error("AdSense error:", e);
+      }
+    }
+  }, []);
 
   return (
     <div className="bg-white rounded-xl p-4 sm:p-6 border border-slate-200">
@@ -23,27 +30,14 @@ const Ad = () => {
       </h3>
 
       <div ref={adRef} className="flex justify-center">
-        {/* ✅ LIVE AD UNIT */}
         <ins
-          className="adsbygoogle block w-full sm:w-[300px] h-[400px]"
-          style={{ display: "block" }}
+          className="adsbygoogle"
+          style={{ display: "block", width: "100%", height: "400px" }}
           data-ad-client="ca-pub-5578366239225688"
           data-ad-slot="3932415611"
           data-ad-format="auto"
           data-full-width-responsive="true"
-        />
-
-        {/* 🧪 TEST AD UNIT (safe to use during development) */}
-        {/*
-        <ins
-          className="adsbygoogle block w-full sm:w-[300px] h-[400px]"
-          style={{ display: "block" }}
-          data-ad-client="ca-pub-3940256099942544" // TEST CLIENT
-          data-ad-slot="6300978111" // TEST SLOT
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        />
-        */}
+        ></ins>
       </div>
 
       <p className="text-xs sm:text-sm text-slate-600 mt-2 text-center">
