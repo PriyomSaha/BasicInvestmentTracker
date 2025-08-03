@@ -34,7 +34,7 @@ const Ad = () => {
           className="adsbygoogle"
           style={{ display: "block", width: "100%", height: "400px" }}
           data-ad-client="ca-pub-5578366239225688"
-          data-ad-slot="3932415611"
+          data-ad-slot="5034578446"
           data-ad-format="auto"
           data-full-width-responsive="true"
         ></ins>
