@@ -31,13 +31,13 @@ const Ad = () => {
           style={{ display: "block" }}
           data-ad-client="ca-pub-5578366239225688"
           data-ad-slot="3932415611"
-          data-ad-format="rectangle"
+          data-ad-format="autorelaxed"
         ></ins>
       </div>
 
       <p className="text-xs sm:text-sm text-slate-600 mt-2 text-center">
         This ad is powered by Google AdSense. Your support helps keep this app
-        free. Thank you!
+        free.
       </p>
     </div>
   );

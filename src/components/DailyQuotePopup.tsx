@@ -16,15 +16,6 @@ const DailyQuotePopup: React.FC = () => {
     const lastShown = localStorage.getItem("quoteLastShown");
     const storedQuote = localStorage.getItem("dailyQuote");
 
-    console.log(
-      "Today:",
-      today,
-      "Last Shown:",
-      lastShown,
-      "Stored Quote:",
-      storedQuote
-    );
-
     if (lastShown !== today) {
       const newQuote = getRandomQuote();
       console.log("New Quote Generated:", newQuote);
@@ -34,7 +25,6 @@ const DailyQuotePopup: React.FC = () => {
       setIsOpen(true);
     } else if (storedQuote) {
       const parsedQuote = JSON.parse(storedQuote);
-      console.log("Using Stored Quote:", parsedQuote);
       setDailyQuote(parsedQuote);
       setIsOpen(true); // Optional: show if user refreshes page same day
     }
