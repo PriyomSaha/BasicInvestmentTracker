@@ -27,17 +27,17 @@ const Ad = () => {
 
       <div ref={adRef} className="flex justify-center">
         <ins
-          className="adsbygoogle block w-full sm:w-[300px] h-[400px]"
+          className="adsbygoogle block w-full sm:w-[auto] h-[100px]"
           style={{ display: "block" }}
           data-ad-client="ca-pub-5578366239225688"
           data-ad-slot="3932415611"
-          data-ad-format="autorelaxed"
+          data-ad-format="rectangle"
         ></ins>
       </div>
 
       <p className="text-xs sm:text-sm text-slate-600 mt-2 text-center">
         This ad is powered by Google AdSense. Your support helps keep this app
-        free.
+        free. Thank you!
       </p>
     </div>
   );
