@@ -40,14 +40,14 @@ const Ad = () => {
           data-ad-client="ca-pub-5578366239225688"
           data-ad-slot="3932415611"
         ></ins> */}
-        <ins
+        {/* <ins
           className="adsbygoogle block w-full sm:w-[300px] h-[400px]"
           style={{ display: "block" }}
           data-ad-client="ca-pub-5578366239225688"
           data-ad-slot="3932415611"
           data-ad-format="auto"
           data-full-width-responsive="true"
-        />
+        /> */}
         <ins
           className="adsbygoogle block w-full sm:w-[300px] h-[400px]"
           style={{ display: "block" }}
