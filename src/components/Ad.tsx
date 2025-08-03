@@ -23,20 +23,7 @@ const Ad = () => {
       </h3>
 
       <div ref={adRef} className="flex justify-center">
-        {/* <ins
-          className="adsbygoogle block h-[100px] h-[100px]"
-          style={{ display: "block" }}
-          data-ad-client="ca-pub-5578366239225688"
-          data-ad-slot="3932415611"
-          data-ad-format="rectangle"
-        ></ins>
-        <ins
-          className="adsbygoogle"
-          style={{ display: "block" }}
-          data-ad-format="autorelaxed"
-          data-ad-client="ca-pub-5578366239225688"
-          data-ad-slot="3932415611"
-        ></ins> */}
+        {/* ✅ LIVE AD UNIT */}
         <ins
           className="adsbygoogle block w-full sm:w-[300px] h-[400px]"
           style={{ display: "block" }}
@@ -45,14 +32,18 @@ const Ad = () => {
           data-ad-format="auto"
           data-full-width-responsive="true"
         />
-        {/* <ins
+
+        {/* 🧪 TEST AD UNIT (safe to use during development) */}
+        {/*
+        <ins
           className="adsbygoogle block w-full sm:w-[300px] h-[400px]"
           style={{ display: "block" }}
           data-ad-client="ca-pub-3940256099942544" // TEST CLIENT
           data-ad-slot="6300978111" // TEST SLOT
           data-ad-format="auto"
           data-full-width-responsive="true"
-        ></ins> */}
+        />
+        */}
       </div>
 
       <p className="text-xs sm:text-sm text-slate-600 mt-2 text-center">
