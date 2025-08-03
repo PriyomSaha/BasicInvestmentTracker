@@ -11,6 +11,7 @@ import {
 import InvestmentPieChart from "./components/InvestmentPieChart";
 import InvestmentTable from "./components/InvestmentTable";
 import DailyQuotePopup from "./components/DailyQuotePopup";
+import InvestmentTips from "./components/InvestmentTips";
 
 function App() {
   const [investmentData, setInvestmentData] = useState<InvestmentData>({

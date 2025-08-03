@@ -8,6 +8,8 @@ import {
   Clock,
 } from "lucide-react";
 import { InvestmentData } from "../utils/calculations";
+import InvestmentTips from "./InvestmentTips";
+import Ad from "./Ad";
 
 interface InvestmentFormProps {
   data: InvestmentData;
@@ -230,7 +232,6 @@ const InvestmentForm: React.FC<InvestmentFormProps> = ({ data, onChange }) => {
             Try these common investment strategies
           </p>
         </div>
-
         <div className="p-4 sm:p-6">
           <div className="grid gap-3">
             {presetScenarios.map((preset, index) => (
@@ -260,70 +261,8 @@ const InvestmentForm: React.FC<InvestmentFormProps> = ({ data, onChange }) => {
         </div>
       </div>
 
-      {/* Quick Presets */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-        <div className="px-4 sm:px-6 py-3 sm:py-4 bg-slate-50 border-b border-slate-200">
-          <h3 className="text-base sm:text-lg font-semibold text-slate-900">
-            Quick Scenarios
-          </h3>
-          <p className="text-sm text-slate-600">
-            Try these common investment strategies
-          </p>
-        </div>
-        <div className="p-4 sm:p-6">
-          <div className="grid gap-3">
-            {presetScenarios.map((preset, index) => (
-              <button
-                key={index}
-                onClick={() => applyPreset(preset)}
-                className="text-left p-3 sm:p-4 border border-slate-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-all duration-200 group"
-              >
-                <div className="flex justify-between items-start gap-2">
-                  <div>
-                    <div className="font-medium text-slate-900 mb-1 text-sm sm:text-base">
-                      {preset.name}
-                    </div>
-                    <div className="text-xs sm:text-sm text-slate-600">
-                      ${preset.initial.toLocaleString()} initial + $
-                      {preset.monthly}/month at {preset.rate}% for{" "}
-                      {preset.years} years
-                    </div>
-                  </div>
-                  <div className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
-                    <TrendingUp className="w-4 h-4" />
-                  </div>
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Tips */}
-      <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border border-green-200 p-3 sm:p-6">
-        <h3 className="text-base sm:text-lg font-semibold text-green-800 ">
-          💡 Investment Tips
-        </h3>
-        <ul className="space-y-2 text-xs sm:text-sm text-green-700">
-          <li>• Start early to maximize compound interest benefits</li>
-          <li>
-            • Consistent monthly contributions often outperform large one-time
-            investments
-          </li>
-          <li>• Higher compound frequency can significantly boost returns</li>
-          <li>
-            • Consider your risk tolerance when setting return expectations
-          </li>
-          <li>• Diversify across asset classes to reduce overall risk</li>
-          <li>
-            • Rebalance your portfolio periodically to stay aligned with goals
-          </li>
-          <li>
-            • Avoid making decisions based on short-term market volatility
-          </li>
-          <li>• Focus on long-term growth rather than daily price movements</li>
-        </ul>
-      </div>
+      <InvestmentTips />
+      <Ad />
     </div>
   );
 };
