@@ -3,18 +3,18 @@ import { useEffect, useRef } from "react";
 const Ad = () => {
   const adRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      try {
-        // @ts-ignore
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (e) {
-        console.error("AdSense error:", e);
-      }
-    }, 500); // Delay ensures DOM is ready
+  //   useEffect(() => {
+  //     const timer = setTimeout(() => {
+  //       try {
+  //         // @ts-ignore
+  //         (window.adsbygoogle = window.adsbygoogle || []).push({});
+  //       } catch (e) {
+  //         console.error("AdSense error:", e);
+  //       }
+  //     }, 500); // Delay ensures DOM is ready
 
-    return () => clearTimeout(timer);
-  }, []);
+  //     return () => clearTimeout(timer);
+  //   }, []);
 
   return (
     <div className="bg-white rounded-xl p-4 sm:p-6 border border-slate-200">
