@@ -19,12 +19,16 @@ const Ad = () => {
 
       <ins
         className="adsbygoogle"
-        data-ad-client="ca-pub-3940256099942544"
-        data-ad-slot="1234567890"
+        data-ad-client="ca-pub-5578366239225688"
+        data-ad-slot="3932415611"
         data-ad-format="rectangle"
       >
         I am a placeholder for an advertisement
       </ins>
+      <p className="text-xs sm:text-sm text-slate-600 mt-2">
+        This ad is powered by Google AdSense. Your support helps keep this app
+        free. Thank you!
+      </p>
     </div>
   );
 };
