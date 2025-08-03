@@ -24,17 +24,17 @@ const Ad = () => {
 
       <div ref={adRef} className="flex justify-center">
         {/* ✅ LIVE AD UNIT */}
-        <ins
+        {/* <ins
           className="adsbygoogle block w-full sm:w-[300px] h-[400px]"
           style={{ display: "block" }}
           data-ad-client="ca-pub-5578366239225688"
           data-ad-slot="3932415611"
           data-ad-format="auto"
           data-full-width-responsive="true"
-        />
+        /> */}
 
         {/* 🧪 TEST AD UNIT (safe to use during development) */}
-        {/*
+
         <ins
           className="adsbygoogle block w-full sm:w-[300px] h-[400px]"
           style={{ display: "block" }}
@@ -43,7 +43,6 @@ const Ad = () => {
           data-ad-format="auto"
           data-full-width-responsive="true"
         />
-        */}
       </div>
 
       <p className="text-xs sm:text-sm text-slate-600 mt-2 text-center">
