@@ -1,14 +1,22 @@
-// src/Ad.tsx
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const Ad = () => {
+  const adRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    try {
-      // @ts-ignore
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-      console.error("AdSense error:", e);
-    }
+    const interval = setInterval(() => {
+      if (adRef.current && adRef.current.offsetWidth > 0) {
+        try {
+          // @ts-ignore
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+          console.error("AdSense error:", e);
+        }
+        clearInterval(interval);
+      }
+    }, 300);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -17,13 +25,17 @@ const Ad = () => {
         Sponsored
       </h3>
 
-      <ins
-        className="adsbygoogle"
-        data-ad-client="ca-pub-5578366239225688"
-        data-ad-slot="3932415611"
-        data-ad-format="rectangle"
-      ></ins>
-      <p className="text-xs sm:text-sm text-slate-600 mt-2">
+      <div ref={adRef} className="flex justify-center">
+        <ins
+          className="adsbygoogle block w-full sm:w-[300px] h-[400px]"
+          style={{ display: "block" }}
+          data-ad-client="ca-pub-5578366239225688"
+          data-ad-slot="3932415611"
+          data-ad-format="rectangle"
+        ></ins>
+      </div>
+
+      <p className="text-xs sm:text-sm text-slate-600 mt-2 text-center">
         This ad is powered by Google AdSense. Your support helps keep this app
         free. Thank you!
       </p>
