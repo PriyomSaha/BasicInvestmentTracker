@@ -26,7 +26,7 @@ const Ad = () => {
       </h3>
 
       <div ref={adRef} className="flex justify-center">
-        <ins
+        {/* <ins
           className="adsbygoogle block h-[100px] h-[100px]"
           style={{ display: "block" }}
           data-ad-client="ca-pub-5578366239225688"
@@ -39,7 +39,7 @@ const Ad = () => {
           data-ad-format="autorelaxed"
           data-ad-client="ca-pub-5578366239225688"
           data-ad-slot="3932415611"
-        ></ins>
+        ></ins> */}
         <ins
           className="adsbygoogle block w-full sm:w-[300px] h-[400px]"
           style={{ display: "block" }}
