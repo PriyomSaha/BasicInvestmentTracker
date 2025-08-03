@@ -4,19 +4,16 @@ const Ad = () => {
   const adRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (adRef.current && adRef.current.offsetWidth > 0) {
-        try {
-          // @ts-ignore
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-        } catch (e) {
-          console.error("AdSense error:", e);
-        }
-        clearInterval(interval);
+    const timer = setTimeout(() => {
+      try {
+        // @ts-ignore
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        console.error("AdSense error:", e);
       }
-    }, 300);
+    }, 500); // Delay ensures DOM is ready
 
-    return () => clearInterval(interval);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
