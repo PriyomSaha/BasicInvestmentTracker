@@ -32,7 +32,7 @@ const Ad = () => {
       <div ref={adRef} className="flex justify-center">
         <ins
           className="adsbygoogle"
-          style={{ display: "block", width: "100%", height: "400px" }}
+          // style={{ display: "block", width: "100%", height: "400px" }}
           data-ad-client="ca-pub-5578366239225688"
           data-ad-slot="5034578446"
           data-ad-format="auto"
