@@ -29,7 +29,7 @@ const Ad = () => {
         Sponsored
       </h3>
 
-      <div ref={adRef} className="flex justify-center">
+      <div ref={adRef} className="flex justify-center h-8">
         <ins
           className="adsbygoogle"
           // style={{ display: "block", width: "100%", height: "400px" }}

@@ -96,11 +96,11 @@ function App() {
             {result && (
               <>
                 <ResultsDisplay result={result} />
-                <InvestmentChart data={investmentData} result={result} />
+                {/* <InvestmentChart data={investmentData} result={result} /> */}
 
                 {/* Pie Chart */}
                 <div className="lg:col-span-2 space-y-4 sm:space-y-6">
-                  <InvestmentPieChart data={investmentData} result={result} />
+                  {/* <InvestmentPieChart data={investmentData} result={result} /> */}
                 </div>
               </>
             )}
@@ -171,7 +171,7 @@ function App() {
       {/* Install PWA Button */}
       {showInstall && (
         <button
-          onClick={handleInstallClick}
+          // onClick={handleInstallClick}
           style={{
             position: "fixed",
             bottom: "20px",
