@@ -5,7 +5,6 @@ import {
   Calendar,
   TrendingUp,
   RotateCcw,
-  Clock,
 } from "lucide-react";
 import { InvestmentData } from "../utils/calculations";
 import InvestmentTips from "./InvestmentTips";
@@ -23,6 +22,23 @@ const InvestmentForm: React.FC<InvestmentFormProps> = ({ data, onChange }) => {
     { value: 12, label: "Monthly", description: "12x per year" },
     // { value: 365, label: "Daily", description: "365x per year" },
   ];
+
+  // Helper to handle number inputs gracefully:
+  const handleNumberChange = (
+    field: keyof InvestmentData,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const val = e.target.value;
+    // Allow empty input for clearing
+    if (val === "") {
+      onChange(field, 0); // or choose to handle empty differently
+      return;
+    }
+    const numericValue = Number(val);
+    if (!isNaN(numericValue)) {
+      onChange(field, numericValue);
+    }
+  };
 
   const resetToDefaults = () => {
     onChange("initialAmount", 10000);
@@ -84,10 +100,8 @@ const InvestmentForm: React.FC<InvestmentFormProps> = ({ data, onChange }) => {
               <input
                 type="number"
                 id="initialAmount"
-                value={data.initialAmount}
-                onChange={(e) =>
-                  onChange("initialAmount", Number(e.target.value))
-                }
+                value={data.initialAmount === 0 ? "" : data.initialAmount}
+                onChange={(e) => handleNumberChange("initialAmount", e)}
                 className="w-full pl-8 pr-4 py-2 sm:py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-base sm:text-lg font-medium"
                 placeholder="10,000"
                 min="0"
@@ -115,10 +129,10 @@ const InvestmentForm: React.FC<InvestmentFormProps> = ({ data, onChange }) => {
               <input
                 type="number"
                 id="monthlyContribution"
-                value={data.monthlyContribution}
-                onChange={(e) =>
-                  onChange("monthlyContribution", Number(e.target.value))
+                value={
+                  data.monthlyContribution === 0 ? "" : data.monthlyContribution
                 }
+                onChange={(e) => handleNumberChange("monthlyContribution", e)}
                 className="w-full pl-8 pr-4 py-2 sm:py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-base sm:text-lg font-medium"
                 placeholder="500"
                 min="0"
@@ -143,10 +157,10 @@ const InvestmentForm: React.FC<InvestmentFormProps> = ({ data, onChange }) => {
               <input
                 type="number"
                 id="annualInterestRate"
-                value={data.annualInterestRate}
-                onChange={(e) =>
-                  onChange("annualInterestRate", Number(e.target.value))
+                value={
+                  data.annualInterestRate === 0 ? "" : data.annualInterestRate
                 }
+                onChange={(e) => handleNumberChange("annualInterestRate", e)}
                 className="w-full pl-4 pr-8 py-2 sm:py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-base sm:text-lg font-medium"
                 placeholder="7.0"
                 min="0"
@@ -175,8 +189,8 @@ const InvestmentForm: React.FC<InvestmentFormProps> = ({ data, onChange }) => {
               <input
                 type="number"
                 id="years"
-                value={data.years}
-                onChange={(e) => onChange("years", Number(e.target.value))}
+                value={data.years === 0 ? "" : data.years}
+                onChange={(e) => handleNumberChange("years", e)}
                 className="w-full pl-4 pr-12 sm:pr-16 py-2 sm:py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-base sm:text-lg font-medium"
                 placeholder="10"
                 min="1"

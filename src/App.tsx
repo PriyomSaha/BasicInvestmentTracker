@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Calculator, TrendingUp, DollarSign, Clock } from "lucide-react";
+import {
+  Calculator,
+  TrendingUp,
+  DollarSign,
+  Clock,
+  ArrowBigDownDash,
+} from "lucide-react";
 import InvestmentForm from "./components/InvestmentForm";
 import ResultsDisplay from "./components/ResultsDisplay";
 import InvestmentChart from "./components/InvestmentChart";
@@ -96,11 +102,11 @@ function App() {
             {result && (
               <>
                 <ResultsDisplay result={result} />
-                {/* <InvestmentChart data={investmentData} result={result} /> */}
+                <InvestmentChart data={investmentData} result={result} />
 
                 {/* Pie Chart */}
                 <div className="lg:col-span-2 space-y-4 sm:space-y-6">
-                  {/* <InvestmentPieChart data={investmentData} result={result} /> */}
+                  <InvestmentPieChart data={investmentData} result={result} />
                 </div>
               </>
             )}
@@ -171,21 +177,10 @@ function App() {
       {/* Install PWA Button */}
       {showInstall && (
         <button
-          // onClick={handleInstallClick}
-          style={{
-            position: "fixed",
-            bottom: "20px",
-            right: "20px",
-            backgroundColor: "#00e676",
-            color: "#000",
-            padding: "12px 18px",
-            borderRadius: "12px",
-            fontWeight: "bold",
-            boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
-            zIndex: 1000,
-          }}
+          onClick={handleInstallClick}
+          className="fixed bottom-5 right-5 bg-blue-600 text-white py-3 px-4 rounded-xl font-bold shadow-md z-[1000] hover:bg-blue-700 transition-colors flex items-center gap-2"
         >
-          Install App
+          Install App <ArrowBigDownDash className="bounce" />
         </button>
       )}
     </div>
