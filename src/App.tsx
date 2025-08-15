@@ -83,7 +83,7 @@ return (
           </div>
           <div>
             <h1 className="text-2xl font-bold text-slate-900">
-              Investment Calculator ajvajvdajv
+              Investment Calculator
             </h1>
             <p className="text-slate-600">
               Calculate your investment growth with compound interest

@@ -3,7 +3,7 @@
   "description": "A web application to track and visualize investment portfolios using React and Chart.js.",
   "author": "Your Name <Priyom Saha>",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
