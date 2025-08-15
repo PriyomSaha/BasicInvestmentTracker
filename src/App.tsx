@@ -89,7 +89,7 @@ function App() {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-slate-900">
-                Investment Calculator
+                Investment Calculator Testing App
               </h1>
               <p className="text-slate-600">
                 Calculate your investment growth with compound interest
@@ -203,7 +203,7 @@ function App() {
             (window as any).$updateSW?.(); // Activate new SW
             window.location.reload();
           }}
-          className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-4 py-2 rounded-xl shadow-lg z-[2000]"
+          className="fixed bottom-5 right-5 bg-blue-600 text-white py-3 px-4 rounded-xl font-bold shadow-md z-[1000] hover:bg-blue-700 transition-colors flex items-center gap-2"
         >
           New Version Available – Tap to Refresh
         </button>
