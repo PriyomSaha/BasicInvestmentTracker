@@ -83,7 +83,7 @@ return (
           </div>
           <div>
             <h1 className="text-2xl font-bold text-slate-900">
-              Investment Calculator
+              Investment Calculator ajvajvdajv
             </h1>
             <p className="text-slate-600">
               Calculate your investment growth with compound interest
@@ -187,9 +187,14 @@ return (
       </button>
     )}
     {justUpdated && (
-      <div className="fixed bottom-5 right-5 bg-green-600 text-white py-2 px-3 rounded-lg shadow-lg z-[2000]">
-        App updated successfully!
-      </div>
+      <>
+        <div className="fixed bottom-5 right-5 bg-green-600 text-white py-2 px-3 rounded-lg shadow-lg z-[2000]">
+          App updated successfully!
+        </div>
+        {alert(
+          "App updated successfully! Please refresh the page to see the latest changes."
+        )}
+      </>
     )}
   </div>
 );
