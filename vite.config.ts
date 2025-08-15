@@ -48,6 +48,6 @@ export default defineConfig({
     exclude: ["lucide-react"],
   },
   define: {
-    __APP_VERSION__: JSON.stringify(pkg.version), // 👈 inject as global constant
+    __APP_VERSION__: JSON.stringify(pkg.version),
   },
 });

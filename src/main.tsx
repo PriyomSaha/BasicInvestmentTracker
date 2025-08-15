@@ -5,14 +5,7 @@ import "./index.css";
 
 import { registerSW } from "virtual:pwa-register";
 
-registerSW({
-  onNeedRefresh() {
-    window.location.reload();
-  },
-  onOfflineReady() {
-    console.log("App ready for offline use");
-  },
-});
+registerSW();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
