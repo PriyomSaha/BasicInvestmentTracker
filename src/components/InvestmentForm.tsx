@@ -20,7 +20,6 @@ const InvestmentForm: React.FC<InvestmentFormProps> = ({ data, onChange }) => {
     { value: 1, label: "Annually", description: "1x per year" },
     { value: 4, label: "Quarterly", description: "4x per year" },
     { value: 12, label: "Monthly", description: "12x per year" },
-    // { value: 365, label: "Daily", description: "365x per year" },
   ];
 
   // Helper to handle number inputs gracefully:
@@ -28,10 +27,9 @@ const InvestmentForm: React.FC<InvestmentFormProps> = ({ data, onChange }) => {
     field: keyof InvestmentData,
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const val = e.target.value;
-    // Allow empty input for clearing
+    const val = e.target.value.replace(/,/g, ""); // remove commas
     if (val === "") {
-      onChange(field, 0); // or choose to handle empty differently
+      onChange(field, 0);
       return;
     }
     const numericValue = Number(val);
@@ -59,6 +57,12 @@ const InvestmentForm: React.FC<InvestmentFormProps> = ({ data, onChange }) => {
     onChange("monthlyContribution", preset.monthly);
     onChange("annualInterestRate", preset.rate);
     onChange("years", preset.years);
+  };
+
+  // Format with commas (UI only)
+  const formatUI = (num: number) => {
+    if (!num) return "";
+    return num.toLocaleString("en-US");
   };
 
   return (
@@ -98,14 +102,12 @@ const InvestmentForm: React.FC<InvestmentFormProps> = ({ data, onChange }) => {
                 $
               </span>
               <input
-                type="number"
+                type="text"
                 id="initialAmount"
-                value={data.initialAmount === 0 ? "" : data.initialAmount}
+                value={formatUI(data.initialAmount)}
                 onChange={(e) => handleNumberChange("initialAmount", e)}
                 className="w-full pl-8 pr-4 py-2 sm:py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-base sm:text-lg font-medium"
                 placeholder="10,000"
-                min="0"
-                step="100"
               />
             </div>
             <p className="text-xs text-slate-500">
@@ -127,16 +129,12 @@ const InvestmentForm: React.FC<InvestmentFormProps> = ({ data, onChange }) => {
                 $
               </span>
               <input
-                type="number"
+                type="text"
                 id="monthlyContribution"
-                value={
-                  data.monthlyContribution === 0 ? "" : data.monthlyContribution
-                }
+                value={formatUI(data.monthlyContribution)}
                 onChange={(e) => handleNumberChange("monthlyContribution", e)}
                 className="w-full pl-8 pr-4 py-2 sm:py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-base sm:text-lg font-medium"
                 placeholder="500"
-                min="0"
-                step="50"
               />
             </div>
             <p className="text-xs text-slate-500">
@@ -261,8 +259,8 @@ const InvestmentForm: React.FC<InvestmentFormProps> = ({ data, onChange }) => {
                     </div>
                     <div className="text-xs sm:text-sm text-slate-600">
                       ${preset.initial.toLocaleString()} initial + $
-                      {preset.monthly}/month at {preset.rate}% for{" "}
-                      {preset.years} years
+                      {preset.monthly.toLocaleString()}/month at {preset.rate}%
+                      for {preset.years} years
                     </div>
                   </div>
                   <div className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">

@@ -1,7 +1,9 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "Investment-Portfolio-Tracker",
+  "description": "A web application to track and visualize investment portfolios using React and Chart.js.",
+  "author": "Your Name <Priyom Saha>",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",

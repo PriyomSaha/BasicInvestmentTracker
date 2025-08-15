@@ -65,6 +65,19 @@ function App() {
     });
   };
 
+  const [updateAvailable, setUpdateAvailable] = useState(false);
+
+  useEffect(() => {
+    const handleUpdateEvent = () => {
+      setUpdateAvailable(true);
+    };
+    window.addEventListener("sw-update-available", handleUpdateEvent);
+
+    return () => {
+      window.removeEventListener("sw-update-available", handleUpdateEvent);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header */}
@@ -181,6 +194,18 @@ function App() {
           className="fixed bottom-5 right-5 bg-blue-600 text-white py-3 px-4 rounded-xl font-bold shadow-md z-[1000] hover:bg-blue-700 transition-colors flex items-center gap-2"
         >
           Install App <ArrowBigDownDash className="bounce" />
+        </button>
+      )}
+      {/* Update Available Notification */}
+      {updateAvailable && (
+        <button
+          onClick={() => {
+            (window as any).$updateSW?.(); // Activate new SW
+            window.location.reload();
+          }}
+          className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-4 py-2 rounded-xl shadow-lg z-[2000]"
+        >
+          New Version Available – Tap to Refresh
         </button>
       )}
     </div>
