@@ -1,12 +1,13 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
+import pkg from "./package.json";
 
 export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: "prompt",
+      registerType: "autoUpdate",
       includeAssets: [
         "favicon.ico",
         "apple-touch-icon.png",
@@ -45,5 +46,8 @@ export default defineConfig({
   ],
   optimizeDeps: {
     exclude: ["lucide-react"],
+  },
+  define: {
+    __APP_VERSION__: JSON.stringify(pkg.version), // 👈 inject as global constant
   },
 });

@@ -17,7 +17,6 @@ import {
 import InvestmentPieChart from "./components/InvestmentPieChart";
 import InvestmentTable from "./components/InvestmentTable";
 import DailyQuotePopup from "./components/DailyQuotePopup";
-import InvestmentTips from "./components/InvestmentTips";
 
 function App() {
   const [investmentData, setInvestmentData] = useState<InvestmentData>({
@@ -185,16 +184,6 @@ return (
       >
         Install App <ArrowBigDownDash className="bounce" />
       </button>
-    )}
-    {justUpdated && (
-      <>
-        <div className="fixed bottom-5 right-5 bg-green-600 text-white py-2 px-3 rounded-lg shadow-lg z-[2000]">
-          App updated successfully!
-        </div>
-        {alert(
-          "App updated successfully! Please refresh the page to see the latest changes."
-        )}
-      </>
     )}
   </div>
 );

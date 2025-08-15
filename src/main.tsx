@@ -7,7 +7,6 @@ import { registerSW } from "virtual:pwa-register";
 
 registerSW({
   onNeedRefresh() {
-    localStorage.setItem("justUpdated", "true");
     window.location.reload();
   },
   onOfflineReady() {
